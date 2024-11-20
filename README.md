@@ -12,15 +12,15 @@
 
   ## Parameters
 
-  | Parameter   | Alias | Required | Description                                    | Type   |
-  | ----------- | ----- | -------- | ---------------------------------------------- | ------ |
-  | `--message` | `-m`  | true     | The message content of the notification        | String |
-  | `--image`   | `-i`  | false    | Url to the image displayed in the notification | String |
-  | `--email`   | `-e`  | false    | Email address to display in the notification   | String |
-  | `--phone`   | `-p`  | false    | Phone number to display in the notification    | String |
+  | Parameter    | Alias | Required | Description                                    | Type   |
+  | -----------  | ----- | -------- | ---------------------------------------------- | ------ |
+  | `--Message`  | `-m`  | true     | The message content of the notification        | String |
+  | `--ImageURL` | `-i`  | false    | Url to the image displayed in the notification | String |
+  | `--Email`    | `-e`  | false    | Email address to display in the notification   | String |
+  | `--Phone`    | `-p`  | false    | Phone number to display in the notification    | String |
 
   ## Usage
 
   ```shell
-  SimpleNotification.exe --message "Hello, World!" --image "https://example.com/image.png" --email "myemail@somewhere.local" --phone "000-000-0000"
+  SimpleNotification.exe --Message "Hello, World!" --ImageURL "https://raw.githubusercontent.com/ProVal-Tech/SimpleNotification/refs/heads/main/res/SimpleNotification.jpeg" --Email "myemail@somewhere.local" --Phone "000-000-0000"
   ```
