@@ -8,4 +8,4 @@ A simple notification app.
 
 ## Description
 
-SimpleNotification is a lightweight application designed to show a simple notifications prompt.
+SimpleNotification is a lightweight application designed to show a simple notification prompt.
