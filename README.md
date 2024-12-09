@@ -42,3 +42,7 @@
   ```shell
   SimpleNotification.exe --Message "Hello, World!" --ImageURL "https://raw.githubusercontent.com/ProVal-Tech/SimpleNotification/refs/heads/main/res/SimpleNotification.jpeg" --Email "myemail@somewhere.local" --Phone "000-000-0000"
   ```
+
+  ```shell
+  SimpleNotification.exe -c "C:\config.toml"
+  ```
