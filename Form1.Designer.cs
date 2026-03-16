@@ -1,5 +1,7 @@
-﻿namespace SimpleNotification {
-    partial class Form1 {
+﻿namespace SimpleNotification
+{
+    partial class Form1
+    {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -9,8 +11,10 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing) {
-            if (disposing && (components != null)) {
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -22,7 +26,8 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             this.pictureBox_Logo = new System.Windows.Forms.PictureBox();
             this.textBox_message = new System.Windows.Forms.TextBox();
             this.label_email = new System.Windows.Forms.Label();
@@ -33,10 +38,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Logo)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox_BISLogo
+            // pictureBox_Logo
             // 
             this.pictureBox_Logo.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox_Logo.Name = "pictureBox_BISLogo";
+            this.pictureBox_Logo.Name = "pictureBox_Logo";
             this.pictureBox_Logo.Size = new System.Drawing.Size(156, 150);
             this.pictureBox_Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_Logo.TabIndex = 0;
@@ -55,6 +60,7 @@
             this.textBox_message.ReadOnly = true;
             this.textBox_message.Size = new System.Drawing.Size(326, 83);
             this.textBox_message.TabIndex = 1;
+            this.textBox_message.TextChanged += new System.EventHandler(this.textBox_message_TextChanged);
             // 
             // label_email
             // 
@@ -150,4 +156,3 @@
         private System.Windows.Forms.LinkLabel label_email2;
     }
 }
-

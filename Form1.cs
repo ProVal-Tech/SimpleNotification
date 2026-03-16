@@ -3,43 +3,110 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace SimpleNotification {
-    public partial class Form1 : Form {
-        public Form1(string message, string imageURL, string email, string phone) {
+namespace SimpleNotification
+{
+    public partial class Form1 : Form
+    {
+        public Form1(string message, string imageURL, string email, string phone)
+        {
             InitializeComponent();
+
+            // Set the text first
             textBox_message.Text = message;
+
+            // Dynamically adjust the form size based on message length
+            AdjustFormSize(message.Length);
+
             Regex urlRegex = new Regex(@"[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)");
-            if (urlRegex.IsMatch(imageURL)) {
-                try {
+            if (urlRegex.IsMatch(imageURL))
+            {
+                try
+                {
                     pictureBox_Logo.Load(imageURL);
-                } catch {
+                }
+                catch
+                {
                     pictureBox_Logo.Visible = false;
                 }
             }
+
             label_email2.Text = email;
             label_phone2.Text = phone;
 
-            if (string.IsNullOrEmpty(email)) {
+            if (string.IsNullOrEmpty(email))
+            {
                 label_email.Visible = false;
                 label_email2.Visible = false;
             }
 
-            if (string.IsNullOrEmpty(phone)) {
+            if (string.IsNullOrEmpty(phone))
+            {
                 label_phone.Visible = false;
                 label_phone2.Visible = false;
             }
 
-            // Fix for WinForms not updating ForeColor on disabled TextBoxes. Ref: https://stackoverflow.com/questions/20688408/how-do-you-change-the-text-color-of-a-readonly-textbox
+            // Fix for WinForms not updating ForeColor on disabled TextBoxes.
             textBox_message.BackColor = textBox_message.BackColor;
         }
 
-        private void button_close_Click(object sender, EventArgs e) {
+        // --- NEW METHOD FOR DYNAMIC RESIZING ---
+        private void AdjustFormSize(int len)
+        {
+            if (len <= 300)
+            {
+                // --- SMALL LAYOUT (Original Size) ---
+                this.ClientSize = new System.Drawing.Size(500, 150);
+                pictureBox_Logo.Size = new System.Drawing.Size(156, 150);
+                textBox_message.Size = new System.Drawing.Size(326, 83);
+
+                label_email.Location = new System.Drawing.Point(159, 97);
+                label_email2.Location = new System.Drawing.Point(201, 96);
+                label_phone.Location = new System.Drawing.Point(159, 112);
+                label_phone2.Location = new System.Drawing.Point(200, 112);
+                button_close.Location = new System.Drawing.Point(413, 115);
+            }
+            else if (len <= 500)
+            {
+                // --- MEDIUM LAYOUT ---
+                this.ClientSize = new System.Drawing.Size(550, 190);
+                pictureBox_Logo.Size = new System.Drawing.Size(156, 190);
+                textBox_message.Size = new System.Drawing.Size(376, 123);
+
+                label_email.Location = new System.Drawing.Point(159, 137);
+                label_email2.Location = new System.Drawing.Point(201, 136);
+                label_phone.Location = new System.Drawing.Point(159, 152);
+                label_phone2.Location = new System.Drawing.Point(200, 152);
+                button_close.Location = new System.Drawing.Point(463, 155);
+            }
+            else
+            {
+                // --- LARGE LAYOUT (Max Size for 500+) ---
+                this.ClientSize = new System.Drawing.Size(600, 230);
+                pictureBox_Logo.Size = new System.Drawing.Size(156, 230);
+                textBox_message.Size = new System.Drawing.Size(426, 163);
+
+                label_email.Location = new System.Drawing.Point(159, 177);
+                label_email2.Location = new System.Drawing.Point(201, 176);
+                label_phone.Location = new System.Drawing.Point(159, 192);
+                label_phone2.Location = new System.Drawing.Point(200, 192);
+                button_close.Location = new System.Drawing.Point(513, 195);
+            }
+        }
+
+        private void button_close_Click(object sender, EventArgs e)
+        {
             Environment.Exit(0);
         }
 
-        private void label_email2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
+        private void label_email2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
             string mailtoUrl = $"mailto:{label_email2.Text}";
             Process.Start(new ProcessStartInfo(mailtoUrl) { UseShellExecute = true });
+        }
+
+        private void textBox_message_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
